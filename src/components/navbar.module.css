@@ -1,0 +1,48 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 600px) {
+    .main {
+        background-color: green;
+    }
+}
+.stepContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.circle {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer
+}
+.stepInfo {
+    display: flex;
+    flex-direction: column;
+}
+.subtitle{
+    color: #ABBCFF;
+    font-family: Ubuntu;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.title{
+    color: #FFF;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

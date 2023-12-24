@@ -1,4 +1,36 @@
+.content-header {
+  color: #022959;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: Ubuntu;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.content-subheader {
+  color: var(--Denim, #022959);
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Heading */
+  font-family: Ubuntu;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.container {
+  display: flex;
+}
+
+.navBar {
+  width: 33%; /* Adjust as necessary */
+}
+
+.content {
+  width: 67%; /* Adjust as necessary */
+}
 :root {
+
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
