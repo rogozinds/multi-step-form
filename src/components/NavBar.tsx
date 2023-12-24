@@ -22,9 +22,9 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
           : {  backgroundColor: 'transparent', color: 'white', border: '1px solid white' ,   };
       };
     return (
-            <div className={styles.main} style={backgroundImage}>
+            <div className={styles.main} style={backgroundImage} >
               {steps.map(step => (
-                    <div key={step.index} className={styles.stepContainer} >
+                    <div key={step.index} className={styles.stepContainer}>
                         <div className={styles.circle} style={getCircleStyle(step.index)} onClick={()=>handleClick(step.index)}>
                             {step.index}
                         </div>

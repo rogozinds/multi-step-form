@@ -23,14 +23,12 @@ export const MultiForm = () => {
     }
   };
     return (
-        <>
-            <div className="container">
-              <NavBar className="navBar" steps={steps} activeStep={step} setActiveStep={setStep} />
+            <div className={`container ${styles.main}`}>
+              <NavBar className="nav-bar" steps={steps} activeStep={step} setActiveStep={setStep} />
               <div className="content">
                 {renderStep()}
               </div>
-    </div>
-        </>
+            </div>
     );
 };
 const steps:StepHeader[]= [

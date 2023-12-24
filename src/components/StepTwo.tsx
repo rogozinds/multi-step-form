@@ -10,10 +10,10 @@ export const StepTwo = () => {
         <>
 
             <div className="content-header">
-                Select Your Plan
+                Pick add-ons
             </div>
             <div className="content-subheader">
-                Please provide your name, email address, and phone number.
+                Add-ons help enhance your gaming experience.
             </div>
         </>
     );
