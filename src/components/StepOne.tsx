@@ -1,8 +1,15 @@
 'use client'
 import {TextInput} from "@/components/TextInput";
-import {useRef, useState} from "react";
+import {FC, useRef, useState} from "react";
+import {StepHeader} from "@/components/StepHeader";
+import {Step} from "@/components/Step";
 
-export const StepOne = () => {
+
+interface StepProps {
+    step:number;
+    setStep: (_:number)=>void;
+}
+export const StepOne:FC<StepProps> = ({step, setStep}) => {
     let [name,setName]= useState("");
     let [email,setEmail]= useState("");
     let [phone,setPhone]= useState("");
@@ -13,8 +20,7 @@ export const StepOne = () => {
     const phoneRef = useRef(null);
     const [errors, setErrors] = useState({});
 
-    const handleNext = (event)=>{
-        event.preventDefault();
+    const handleNext = ()=>{
         let newErrors = {};
         // Validate each field
         if (!nameRef.current.checkValidity()) {
@@ -29,27 +35,23 @@ export const StepOne = () => {
             newErrors.phone = phoneRef.current.validationMessage;
         }
         setErrors(newErrors);
-
-        if (Object.keys(newErrors).length === 0) {
-            //Go to next step
-        }
+        setStep(step+1);
+        //TODO return back
+        // if (Object.keys(newErrors).length === 0) {
+        //     setStep(step+1);
+        // }
     }
     return (
-        <div >
-            <div className="step-header">
-                <div className="content-header">
-                    Personal Info
-                </div>
-                <div className="content-subheader">
-                    Please provide your name, email address, and phone number.
-                </div>
-            </div>
-            <div className="step-content" >
+            <Step
+                header="Personal Info"
+                subheader="Please provide your name, email address, and phone number."
+                onNext={handleNext}
+                onPrev={()=>{}}
+                showPrev={true}
+            >
                 <TextInput ref={nameRef} label={"name"} error={errors.name} value={name} setValue={setName} type={"text"} placeholder={"e.g. Stephen King"}></TextInput>
                 <TextInput ref={emailRef} label={"Email Address"} error={errors.email} value={email} setValue={setEmail} type={"email"} placeholder={"e.g. stephenking@lorem.com"}></TextInput>
                 <TextInput ref={phoneRef} label={"Phone Number"} error={errors.phone} value={phone} setValue={setPhone} type={"tel"} placeholder={"e.g. +1 234 567 890"}></TextInput>
-            </div>
-            <button onClick={handleNext}> Next</button>
-        </div>
+            </Step>
     );
 };

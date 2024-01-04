@@ -1,0 +1,36 @@
+.step_navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 28px;
+}
+.next_button {
+    width: 123px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #022959;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer; /* Changes the mouse cursor to indicate it's clickable */
+    border:0px;
+}
+.prev_button {
+    color: #9699AA;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    background-color: transparent; /* Removes the default background */
+    border: none; /* Removes the border */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margins */
+    cursor: pointer; /* Changes the mouse cursor to indicate it's clickable */
+    text-align: left; /* Align text to the left */
+    text-decoration: none; /* Removes underline from text */
+    display: inline; /* Makes the button flow with text */
+}

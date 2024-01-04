@@ -1,22 +1,26 @@
 'use client'
-import {TextInput} from "@/components/TextInput";
-import {useState} from "react";
+import React, {FC, useState} from "react";
+import {Step} from "@/components/Step";
 
-export const StepTwo = () => {
-    let [name,setName]= useState("");
-    let [email,setEmail]= useState("");
-    let [phone,setPhone]= useState("");
+interface StepProps {
+    step:number;
+    setStep: (_:number)=>void;
+}
+export const StepTwo:FC<StepProps> = ({step,setStep}) => {
+    const handleNext=()=>{
+        setStep(step+1);
+    }
     return (
-        <>
+            <Step
+                header="Pick add-ons"
+                subheader="Add-ons help enhance your gaming experience."
+                onNext={handleNext}
+                onPrev={()=>{}}
+                showPrev={true}
+            >
+                Place holder
+            </Step>
 
-            <div className="step-header">
-                <div className="content-header">
-                    Pick add-ons
-                </div>
-                <div className="content-subheader">
-                    Add-ons help enhance your gaming experience.
-                </div>
-            </div>
-        </>
     );
+
 };
