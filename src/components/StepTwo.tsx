@@ -1,6 +1,7 @@
 'use client'
 import React, {FC, useState} from "react";
 import {Step} from "@/components/Step";
+import {PlanComponent} from "@/components/PlanComponent";
 
 interface StepProps {
     step:number;
@@ -18,7 +19,7 @@ export const StepTwo:FC<StepProps> = ({step,setStep}) => {
                 onPrev={()=>{}}
                 showPrev={true}
             >
-                Place holder
+                <PlanComponent title="Arcade" icon="images/icon-arcade.svg" priceMonth={9} priceYear={90} isMonth={true}/>
             </Step>
 
     );

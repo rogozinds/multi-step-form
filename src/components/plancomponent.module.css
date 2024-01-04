@@ -1,0 +1,35 @@
+.container {
+    width: 138px;
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid #D6D9E6;
+    background: #F8F9FF;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.selected {
+    border: 1px solid  #483EFF;
+}
+
+.logo {
+}
+
+.title {
+    color: #022959;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.price {
+    color: #9699AA;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}

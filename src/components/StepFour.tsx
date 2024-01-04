@@ -1,19 +1,18 @@
 'use client'
 import {TextInput} from "@/components/TextInput";
-import {useState} from "react";
+import React, {useState} from "react";
+import {Step} from "@/components/Step";
 
 export const StepFour = () => {
     return (
-        <>
-
-            <div className="step-header">
-                <div className="content-header">
-                    Finishing up
-                </div>
-                <div className="content-subheader">
-                    Please provide your name, email address, and phone number.
-                </div>
-            </div>
-        </>
+    <Step
+        header="Finishing up"
+        subheader="Double-check everything looks OK before confirming."
+        onNext={()=>{}}
+        onPrev={()=>{}}
+        showPrev={true}
+    >
+        PlaceHolder
+    </Step>
     );
 };
