@@ -6,11 +6,13 @@ export const StepFour = () => {
     return (
         <>
 
-            <div className="content-header">
-                Finishing up
-            </div>
-            <div className="content-subheader">
-                Please provide your name, email address, and phone number.
+            <div className="step-header">
+                <div className="content-header">
+                    Finishing up
+                </div>
+                <div className="content-subheader">
+                    Please provide your name, email address, and phone number.
+                </div>
             </div>
         </>
     );

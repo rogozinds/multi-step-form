@@ -22,7 +22,7 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
           : {  backgroundColor: 'transparent', color: 'white', border: '1px solid white' ,   };
       };
     return (
-            <div className={styles.main} style={backgroundImage} >
+            <div style={backgroundImage} >
               {steps.map(step => (
                     <div key={step.index} className={styles.stepContainer}>
                         <div className={styles.circle} style={getCircleStyle(step.index)} onClick={()=>handleClick(step.index)}>
@@ -40,4 +40,10 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
 const backgroundImage = {
     backgroundImage: 'url("/images/bg-sidebar-desktop.svg")',
     backgroundSize: 'cover',
+    height: "100%",
+    borderRadius: "10px",
+    display: "flex",
+    flexDirection: "column",
+    padding: "40px",
+    gap: "10px",
 };

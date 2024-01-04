@@ -9,11 +9,13 @@ export const StepTwo = () => {
     return (
         <>
 
-            <div className="content-header">
-                Pick add-ons
-            </div>
-            <div className="content-subheader">
-                Add-ons help enhance your gaming experience.
+            <div className="step-header">
+                <div className="content-header">
+                    Pick add-ons
+                </div>
+                <div className="content-subheader">
+                    Add-ons help enhance your gaming experience.
+                </div>
             </div>
         </>
     );

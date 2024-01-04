@@ -24,8 +24,10 @@ export const MultiForm = () => {
   };
     return (
             <div className={`container ${styles.main}`}>
-              <NavBar className="nav-bar" steps={steps} activeStep={step} setActiveStep={setStep} />
-              <div className="content">
+              <div className={styles.navbar}>
+                  <NavBar steps={steps} activeStep={step} setActiveStep={setStep} />
+              </div>
+              <div className={styles.content}>
                 {renderStep()}
               </div>
             </div>
