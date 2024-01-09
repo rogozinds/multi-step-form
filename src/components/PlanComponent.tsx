@@ -8,9 +8,10 @@ interface PlanProps {
     priceMonth: number;
     priceYear: number;
     isMonth:boolean;
+    selected: boolean;
+    setSelected: (n:boolean)=>void;
 }
-export const PlanComponent:FC<PlanProps> = ({title, icon, priceMonth, priceYear,isMonth}) => {
-    const [selected, setSelected]  = useState(false);
+export const PlanComponent:FC<PlanProps> = ({title, icon, priceMonth, priceYear,isMonth, selected,setSelected}) => {
     const calcPrice = (priceMonth:number, priceYear:number, isMonth:boolean) =>{
         if (isMonth) {
             return `$${priceMonth}/mon`;

@@ -20,7 +20,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             <div className={styles.label}>
                 {label}
             </div>
-            <input className={styles.input} value={value} onChange={handleChange} type={type} required={true} placeholder={placeholder} ref={ref}>
+            <input className={ `${styles.input} ${error ? "inputerror" : ""}`} value={value} onChange={handleChange} type={type} required={true} placeholder={placeholder} ref={ref}>
 
             </input>
         </div>

@@ -12,7 +12,7 @@
     cursor: pointer;
 }
 .selected {
-    border: 1px solid  #483EFF;
+    border: 2px solid  #483EFF;
 }
 
 .logo {

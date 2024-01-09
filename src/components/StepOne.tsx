@@ -36,7 +36,8 @@ export const StepOne:FC<StepProps> = ({step, setStep}) => {
         }
         setErrors(newErrors);
         setStep(step+1);
-        //TODO return back
+        //TODO fix issue with syuncing left panel and buttons.
+        // TODO return back
         // if (Object.keys(newErrors).length === 0) {
         //     setStep(step+1);
         // }

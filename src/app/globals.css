@@ -31,7 +31,9 @@
 .error {
   color: red;
 }
-
+.inputerror {
+  border-color: red !important;
+}
 .nav-bar {
   width: 33%; /* Adjust as necessary */
 }
@@ -39,6 +41,11 @@
 .content {
   width: 67%; /* Adjust as necessary */
 }
+/* TODO need to fix issue with both accent-color and error"*/
+input {
+  accent-color: #483EFF;
+}
+
 :root {
 
   --max-width: 1100px;
