@@ -3,27 +3,35 @@ import React, {FC, useState} from "react";
 import {Step} from "@/components/Step";
 import {PlanComponent} from "@/components/PlanComponent";
 import ToggleButton from "@/components/ToogleButton";
+import {UserPlan, UserPlanOptions} from "@/types/UserPlan";
+import {getUserPlans} from "@/service/DataService";
 
 interface StepProps {
     step:number;
     setStep: (_:number)=>void;
 }
+
+const defaultOptions:UserPlanOptions = {
+    arcade: false,
+    pro: false,
+    advanced: false,
+}
 export const StepTwo:FC<StepProps> = ({step,setStep}) => {
-    const [options, setOptions] = useState({
-        arcade: false,
-        pro: false,
-        advanced: false
+
+    const [options, setOptions] = useState<UserPlanOptions>({
+        ...defaultOptions
     });
     const [isMonth, setIsMonth] = useState(true);
     const setOption = (optionName:string, value:boolean) => {
-        setOptions(prevOptions => ({
-            ...prevOptions,
+        setOptions( ()=> ({
+            ...defaultOptions,
             [optionName]: value
         }));
     };
     const handleNext=()=>{
         setStep(step+1);
     }
+    const plans = getUserPlans();
     return (
             <Step
                 header="Select your plan"
@@ -33,19 +41,18 @@ export const StepTwo:FC<StepProps> = ({step,setStep}) => {
                 showPrev={true}
             >
                 <div style={{display:"flex", flexDirection:"row", gap:"16px"}}>
-
+                {Object.entries(plans).map(([planId, planDetails]) => (
                     <PlanComponent
-                        selected={options.arcade}
-                        setSelected={() => setOption('arcade', !options.arcade)}
-                                   title="Arcade" icon="images/icon-arcade.svg" priceMonth={9} priceYear={90} isMonth={true}/>
-                    <PlanComponent
-                        selected={options.advanced}
-                        setSelected={()=>{setOption("advanced", !options.advanced)}}
-                        title="Advanced" icon="images/icon-advanced.svg" priceMonth={12} priceYear={110} isMonth={true}/>
-                    <PlanComponent
-                        selected={options.pro}
-                        setSelected={()=>{setOption("pro", !options.pro)}}
-                        title="Pro" icon="images/icon-pro.svg" priceMonth={15} priceYear={120} isMonth={true}/>
+                        key={planId}
+                        selected={options[planId]}
+                        setSelected={() => setOption(planId, !options[planId])}
+                        title={planDetails.title}
+                        icon={planDetails.icon}
+                        priceMonth={planDetails.monthPrice}
+                        priceYear={planDetails.yearPrice}
+                        isMonth={isMonth}
+                    />
+                ))}
                 </div>
 
                 <div>

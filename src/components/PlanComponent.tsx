@@ -2,8 +2,9 @@
 import React, {FC, forwardRef, useEffect, useState} from "react";
 import styles from './plancomponent.module.css';
 import Image from 'next/image'
+import {calcPrice} from "@/utils/utils";
 interface PlanProps {
-    title: "Arcade" | "Advanced" | "Pro";
+    title:string;
     icon : string;
     priceMonth: number;
     priceYear: number;
@@ -12,13 +13,6 @@ interface PlanProps {
     setSelected: (n:boolean)=>void;
 }
 export const PlanComponent:FC<PlanProps> = ({title, icon, priceMonth, priceYear,isMonth, selected,setSelected}) => {
-    const calcPrice = (priceMonth:number, priceYear:number, isMonth:boolean) =>{
-        if (isMonth) {
-            return `$${priceMonth}/mon`;
-        } else {
-            return `$${priceYear}/yr`;
-        }
-    }
     const price = calcPrice(priceMonth, priceYear, isMonth);
 
     const selectPlan=()=>{
