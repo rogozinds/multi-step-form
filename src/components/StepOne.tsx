@@ -3,13 +3,21 @@ import {TextInput} from "@/components/TextInput";
 import {FC, useRef, useState} from "react";
 import {StepHeader} from "@/components/StepHeader";
 import {Step} from "@/components/Step";
+import {StepProps} from "next/dist/experimental/testmode/playwright/step";
+import {useAtom} from "jotai";
+import {formStateAtom} from "@/store/formState";
 
 
-interface StepProps {
-    step:number;
-    setStep: (_:number)=>void;
-}
-export const StepOne:FC<StepProps> = ({step, setStep}) => {
+export const StepOne:FC<StepProps> = () => {
+
+    const [{ step }, setFormState] = useAtom(formStateAtom);
+
+    const setStep = ( step:number) => {
+        setFormState(oldState => ({
+            ...oldState,
+            step: step
+        }));
+    };
     let [name,setName]= useState("");
     let [email,setEmail]= useState("");
     let [phone,setPhone]= useState("");
@@ -48,7 +56,7 @@ export const StepOne:FC<StepProps> = ({step, setStep}) => {
                 subheader="Please provide your name, email address, and phone number."
                 onNext={handleNext}
                 onPrev={()=>{}}
-                showPrev={true}
+                showPrev={false}
             >
                 <TextInput ref={nameRef} label={"name"} error={errors.name} value={name} setValue={setName} type={"text"} placeholder={"e.g. Stephen King"}></TextInput>
                 <TextInput ref={emailRef} label={"Email Address"} error={errors.email} value={email} setValue={setEmail} type={"email"} placeholder={"e.g. stephenking@lorem.com"}></TextInput>

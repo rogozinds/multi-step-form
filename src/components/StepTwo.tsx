@@ -7,14 +7,17 @@ import {UserPlan, UserPlanOptions} from "@/types/UserPlan";
 import {getUserPlans} from "@/service/DataService";
 import {defaultOptions, formStateAtom} from "@/store/formState";
 import {useAtom} from "jotai";
+import {StepProps} from "next/dist/experimental/testmode/playwright/step";
 
-interface StepProps {
-    step:number;
-    setStep: (_:number)=>void;
-}
+export const StepTwo:FC<StepProps> = () => {
+    const [{step, userPlanOptions, isMonth }, setFormState] = useAtom(formStateAtom);
 
-export const StepTwo:FC<StepProps> = ({step,setStep}) => {
-    const [{ userPlanOptions, isMonth }, setFormState] = useAtom(formStateAtom);
+    const setStep = ( step:number) => {
+        setFormState(oldState => ({
+            ...oldState,
+            step: step
+        }));
+    };
     const setOption = (optionName, value) => {
         setFormState(oldState => ({
             ...oldState,
@@ -33,7 +36,7 @@ export const StepTwo:FC<StepProps> = ({step,setStep}) => {
                 header="Select your plan"
                 subheader="You have the option of monthly or yearly billing."
                 onNext={handleNext}
-                onPrev={()=>{}}
+                onPrev={()=>{setStep(step-1)}}
                 showPrev={true}
             >
 

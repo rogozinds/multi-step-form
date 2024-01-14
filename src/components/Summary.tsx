@@ -5,7 +5,12 @@ import {formStateAtom} from "@/store/formState";
 import {calcPrice} from "@/utils/utils";
 import {getUserAddons, getUserPlans} from "@/service/DataService";
 import {AddonOptions, UserAddon, UserPlan} from "@/types/UserPlan";
-export const Summary = () => {
+import {pick} from "next/dist/lib/pick";
+import {StepHeader} from "@/components/NavBar";
+interface Props {
+    pickAddon:()=>void;
+}
+export const Summary:React.FC<Props> = ({pickAddon}) => {
     const plans = getUserPlans();
     const addons = getUserAddons();
     const [{ userPlanOptions,addonOptions, isMonth }, setFormState] = useAtom(formStateAtom);
@@ -18,7 +23,7 @@ export const Summary = () => {
         }
     }
     const pickUserPlan = ()=>{
-
+        pickAddon();
     }
     const getAddons = ():UserAddon[]=>{
         const items :UserAddon[] = [];

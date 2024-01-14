@@ -1,13 +1,20 @@
 import styles from './multiform.module.css'
-import {useState} from "react";
 import {StepOne} from "@/components/StepOne";
 import {NavBar, StepHeader} from "@/components/NavBar";
 import {StepFour} from "@/components/StepFour";
 import {StepTwo} from "@/components/StepTwo";
 import {StepThree} from "@/components/StepThree";
+import {useAtom} from "jotai";
+import {formStateAtom} from "@/store/formState";
 export const MultiForm = () => {
 
-    const [step, setStep] = useState(1);
+    const [{step}, setFormState] = useAtom(formStateAtom);
+    const setStep = (step:number) => {
+        setFormState(oldState => ({
+            ...oldState,
+            step: step
+        }));
+    };
   const renderStep = () => {
     switch (step) {
       case 1:

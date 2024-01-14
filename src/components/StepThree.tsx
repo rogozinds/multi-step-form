@@ -8,16 +8,16 @@ import {calcPrice} from "@/utils/utils";
 import {useAtom} from "jotai";
 import {formStateAtom} from "@/store/formState";
 
-interface AddonProps {
-    step: number;
-    setStep: (_: number) => void;
-}
+export const StepThree: React.FC = () => {
 
-export const StepThree: React.FC<AddonProps> = ({ step, setStep}) => {
-
-    const [{ addonOptions, isMonth }, setFormState] = useAtom(formStateAtom);
+    const [{ step, addonOptions, isMonth }, setFormState] = useAtom(formStateAtom);
     const addons = getUserAddons();
-
+    const setStep = ( step:number) => {
+        setFormState(oldState => ({
+            ...oldState,
+            step: step
+        }));
+    };
     const setOption = (optionName: keyof AddonOptions, value: boolean) => {
         setFormState(oldState => ({
             ...oldState,
@@ -28,15 +28,14 @@ export const StepThree: React.FC<AddonProps> = ({ step, setStep}) => {
         }));
     };
     const handleNext = () => {
-
+        setStep(step+1);
     }
     return (
         <Step
             header="Pick Addons"
             subheader="Add-ons help enhance your gaming experience."
             onNext={handleNext}
-            onPrev={() => {
-            }}
+            onPrev={()=>{setStep(step-1)}}
             showPrev={true}
         >
             {Object.entries(addons).map(([addonId, details]) => (
