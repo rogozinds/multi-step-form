@@ -24,6 +24,9 @@
     flex-grow: 1;
     padding: 56px 56px 56px 100px;
     height: 100%;
+    align-content: center;
+  justify-content: center;
+  display: flex;
     /*background-color: green;*/
 }
 @media (max-width: 600px) {

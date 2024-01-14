@@ -6,9 +6,12 @@ export const defaultOptions:UserPlanOptions = {
     pro: false,
     advanced: false,
 }
-export const formStateAtom = atom({
+export const defaultFormState = {
     step: 1,
     userPlanOptions: {...defaultOptions, arcade: true},
     addonOptions:[],
     isMonth: true,
+}
+export const formStateAtom = atom({
+    ...defaultFormState
 });

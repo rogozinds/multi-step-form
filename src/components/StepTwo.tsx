@@ -39,8 +39,6 @@ export const StepTwo:FC<StepProps> = () => {
                 onPrev={()=>{setStep(step-1)}}
                 showPrev={true}
             >
-
-                isMonth {isMonth}
                 <div style={{display:"flex", flexDirection:"row", gap:"16px"}}>
                 {Object.entries(plans).map(([planId, planDetails]) => (
                     <PlanComponent

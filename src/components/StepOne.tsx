@@ -43,12 +43,9 @@ export const StepOne:FC<StepProps> = () => {
             newErrors.phone = phoneRef.current.validationMessage;
         }
         setErrors(newErrors);
-        setStep(step+1);
-        //TODO fix issue with syuncing left panel and buttons.
-        // TODO return back
-        // if (Object.keys(newErrors).length === 0) {
-        //     setStep(step+1);
-        // }
+        if (Object.keys(newErrors).length === 0) {
+            setStep(step+1);
+        }
     }
     return (
             <Step

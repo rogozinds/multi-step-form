@@ -9,8 +9,13 @@ interface StepProps {
     onPrev:()=>void;
     onNext:()=>void;
     showPrev:boolean;
+    nextButtonTitle?:string;
 }
-export const Step:FC<StepProps> = ({ header, subheader, children, onPrev, onNext, showPrev }) => {
+export const Step:FC<StepProps> = ({ header, subheader, children, onPrev, onNext, showPrev,nextButtonTitle }) => {
+    let nextTitle="Next Step";
+    if(nextButtonTitle){
+        nextTitle = nextButtonTitle;
+    }
     return (
         <div style={{height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
             <div>
@@ -22,7 +27,7 @@ export const Step:FC<StepProps> = ({ header, subheader, children, onPrev, onNext
             </div>
             <div className={styles.step_navigation}>
                 {showPrev && <button  className={styles.prev_button} onClick={onPrev}>Go Back</button>}
-                <button className={styles.next_button} onClick={onNext}>Next Step</button>
+                <button className={styles.next_button} onClick={onNext}>{nextTitle}</button>
             </div>
         </div>
     );
