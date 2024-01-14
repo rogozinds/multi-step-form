@@ -1,7 +1,12 @@
-export const calcPrice = (priceMonth:number, priceYear:number, isMonth:boolean) =>{
+export const calcPrice = (priceMonth:number, priceYear:number, isMonth:boolean, addPlus?:boolean) =>{
+    let priceString:string;
     if (isMonth) {
-        return `$${priceMonth}/mon`;
+        priceString= `$${priceMonth}/mon`;
     } else {
-        return `$${priceYear}/yr`;
+        priceString= `$${priceYear}/yr`;
     }
+    if(addPlus){
+        return `+${priceString}`;
+    }
+    return priceString;
 }

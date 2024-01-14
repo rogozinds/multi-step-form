@@ -5,30 +5,28 @@ import {Step} from "@/components/Step";
 import {getUserAddons} from "@/service/DataService";
 import {AddonOptions} from "@/types/UserPlan";
 import {calcPrice} from "@/utils/utils";
+import {useAtom} from "jotai";
+import {formStateAtom} from "@/store/formState";
 
 interface AddonProps {
     step: number;
     setStep: (_: number) => void;
-    isMonth?:boolean;
 }
 
-export const StepThree: React.FC<AddonProps> = ({isMonth, step, setStep}) => {
-    const addons = getUserAddons();
-    const [options, setOptions] = useState<AddonOptions>({
-        online_service: false,
-        large_storage: false,
-        custom_profile: false
-    });
+export const StepThree: React.FC<AddonProps> = ({ step, setStep}) => {
 
-    const setOption = (optionName: string, value: boolean) => {
-        setOptions(prevOptions => ({
-            ...prevOptions,
-            [optionName]: value
+    const [{ addonOptions, isMonth }, setFormState] = useAtom(formStateAtom);
+    const addons = getUserAddons();
+
+    const setOption = (optionName: keyof AddonOptions, value: boolean) => {
+        setFormState(oldState => ({
+            ...oldState,
+            addonOptions: {
+                ...oldState.addonOptions,
+                [optionName]: value,
+            }
         }));
     };
-    if (!isMonth) {
-        isMonth = true;
-    }
     const handleNext = () => {
 
     }
@@ -44,11 +42,11 @@ export const StepThree: React.FC<AddonProps> = ({isMonth, step, setStep}) => {
             {Object.entries(addons).map(([addonId, details]) => (
                 <AddonInput
                     key={addonId}
-                    selected={options[addonId]}
-                    setSelected={() => setOption(addonId, !options[addonId])}
+                    selected={addonOptions[addonId]}
+                    setSelected={() => setOption(addonId, !addonOptions[addonId])}
                     header={details.title}
                     subheader={details.subtitle}
-                    price={calcPrice(details.monthPrice, details.yearPrice, isMonth)}
+                    price={calcPrice(details.monthPrice, details.yearPrice, isMonth, true)}
                 />
             ))}
         </Step>

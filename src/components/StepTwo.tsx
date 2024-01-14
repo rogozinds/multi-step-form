@@ -5,27 +5,23 @@ import {PlanComponent} from "@/components/PlanComponent";
 import ToggleButton from "@/components/ToogleButton";
 import {UserPlan, UserPlanOptions} from "@/types/UserPlan";
 import {getUserPlans} from "@/service/DataService";
+import {defaultOptions, formStateAtom} from "@/store/formState";
+import {useAtom} from "jotai";
 
 interface StepProps {
     step:number;
     setStep: (_:number)=>void;
 }
 
-const defaultOptions:UserPlanOptions = {
-    arcade: false,
-    pro: false,
-    advanced: false,
-}
 export const StepTwo:FC<StepProps> = ({step,setStep}) => {
-
-    const [options, setOptions] = useState<UserPlanOptions>({
-        ...defaultOptions
-    });
-    const [isMonth, setIsMonth] = useState(true);
-    const setOption = (optionName:string, value:boolean) => {
-        setOptions( ()=> ({
-            ...defaultOptions,
-            [optionName]: value
+    const [{ userPlanOptions, isMonth }, setFormState] = useAtom(formStateAtom);
+    const setOption = (optionName, value) => {
+        setFormState(oldState => ({
+            ...oldState,
+            userPlanOptions: {
+                ...defaultOptions,
+                [optionName]: value,
+            }
         }));
     };
     const handleNext=()=>{
@@ -40,12 +36,14 @@ export const StepTwo:FC<StepProps> = ({step,setStep}) => {
                 onPrev={()=>{}}
                 showPrev={true}
             >
+
+                isMonth {isMonth}
                 <div style={{display:"flex", flexDirection:"row", gap:"16px"}}>
                 {Object.entries(plans).map(([planId, planDetails]) => (
                     <PlanComponent
                         key={planId}
-                        selected={options[planId]}
-                        setSelected={() => setOption(planId, !options[planId])}
+                        selected={userPlanOptions[planId]}
+                        setSelected={() => setOption(planId, true)}
                         title={planDetails.title}
                         icon={planDetails.icon}
                         priceMonth={planDetails.monthPrice}
@@ -56,7 +54,17 @@ export const StepTwo:FC<StepProps> = ({step,setStep}) => {
                 </div>
 
                 <div>
-                    <ToggleButton left="Monthly" right="Yearly" checked={isMonth} setChecked={setIsMonth}/>
+                    <ToggleButton
+                        left="Monthly"
+                        right="Yearly"
+                        checked={isMonth}
+                        setChecked={()=>{
+                            setFormState(oldState => ({
+                                ...oldState,
+                                isMonth:!isMonth
+                            }));
+                        }}
+                    />
                 </div>
             </Step>
 

@@ -2,8 +2,12 @@
 import {TextInput} from "@/components/TextInput";
 import React, {useState} from "react";
 import {Step} from "@/components/Step";
+import {useAtom} from "jotai";
+import {formStateAtom} from "@/store/formState";
+import {Summary} from "@/components/Summary";
 
 export const StepFour = () => {
+    const [{ userPlanOptions, isMonth }, setFormState] = useAtom(formStateAtom);
     return (
     <Step
         header="Finishing up"
@@ -12,7 +16,7 @@ export const StepFour = () => {
         onPrev={()=>{}}
         showPrev={true}
     >
-        PlaceHolder
+        <Summary></Summary>
     </Step>
     );
 };
