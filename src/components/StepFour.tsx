@@ -4,7 +4,7 @@ import {Step} from "@/components/Step";
 import {useAtom} from "jotai";
 import {defaultFormState, formStateAtom} from "@/store/formState";
 import {Summary} from "@/components/Summary";
-import {ThankYouPage} from "@/pages/ThankYouPage";
+import {ThankYouPage} from "@/components/ThankYouPage";
 
 export const StepFour = () => {
     const [isConfirm, setConfirm] = useState(false);

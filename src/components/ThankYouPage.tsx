@@ -1,7 +1,8 @@
+'use client'
 import Image from 'next/image'
 import styles from './thankyou.module.css';
 
-export const ThankYouPage = () => {
+export const ThankYouPage:React.FC = () => {
     return (
         <div className={styles.container}>
             <Image

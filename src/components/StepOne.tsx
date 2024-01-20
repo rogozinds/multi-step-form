@@ -3,12 +3,11 @@ import {TextInput} from "@/components/TextInput";
 import {FC, useRef, useState} from "react";
 import {StepHeader} from "@/components/StepHeader";
 import {Step} from "@/components/Step";
-import {StepProps} from "next/dist/experimental/testmode/playwright/step";
 import {useAtom} from "jotai";
 import {formStateAtom} from "@/store/formState";
 
 
-export const StepOne:FC<StepProps> = () => {
+export const StepOne:FC = () => {
 
     const [{ step }, setFormState] = useAtom(formStateAtom);
 

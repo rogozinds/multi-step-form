@@ -5,8 +5,6 @@ import {formStateAtom} from "@/store/formState";
 import {calcPrice} from "@/utils/utils";
 import {getUserAddons, getUserPlans} from "@/service/DataService";
 import {AddonOptions, UserAddon, UserPlan} from "@/types/UserPlan";
-import {pick} from "next/dist/lib/pick";
-import {StepHeader} from "@/components/NavBar";
 interface Props {
     pickAddon:()=>void;
 }
@@ -93,11 +91,11 @@ export const Summary:React.FC<Props> = ({pickAddon}) => {
                     </div>
                     {
                         selectedAddons.length > 0 && (
-                            <hr style={{ borderColor: '#9699AA', opacity: "0.2043", borderWidth: 1, width: "100%" }} />
+                            <hr style={{ borderColor: '#9699AA', opacity: "0.2", borderWidth: 1, width: "100%" }} />
                         )
                     }
                     {Object.entries(selectedAddons).map(([addonId, details]) => (
-                       <div className={styles.addon}>
+                       <div className={styles.addon} key={addonId}>
                             <div className={addonstyles.subheader}>
                                 {details.title}
                             </div>

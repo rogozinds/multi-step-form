@@ -18,15 +18,15 @@ export const MultiForm = () => {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <StepOne step={step} setStep={setStep}/>;
+        return <StepOne/>;
       case 2:
-        return <StepTwo step={step} setStep={setStep}/>;
+        return <StepTwo />;
       case 3:
-        return <StepThree step={step} setStep={setStep}/>;
+        return <StepThree />;
       case 4:
-        return <StepFour step={step} setStep={setStep}/>;
+        return <StepFour />;
       default:
-        return <StepOne step={step} setStep={setStep}/>;
+        return <StepOne />;
     }
   };
     return (
@@ -47,7 +47,7 @@ const steps:StepHeader[]= [
     },
     {
         index:2,
-        title: "Select Plan"
+        title: "Select Plan hui"
     },
     {
         index:3,

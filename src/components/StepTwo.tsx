@@ -3,13 +3,12 @@ import React, {FC, useState} from "react";
 import {Step} from "@/components/Step";
 import {PlanComponent} from "@/components/PlanComponent";
 import ToggleButton from "@/components/ToogleButton";
-import {UserPlan, UserPlanOptions} from "@/types/UserPlan";
+import styles from './plancomponent.module.css';
 import {getUserPlans} from "@/service/DataService";
 import {defaultOptions, formStateAtom} from "@/store/formState";
 import {useAtom} from "jotai";
-import {StepProps} from "next/dist/experimental/testmode/playwright/step";
 
-export const StepTwo:FC<StepProps> = () => {
+export const StepTwo:FC = () => {
     const [{step, userPlanOptions, isMonth }, setFormState] = useAtom(formStateAtom);
 
     const setStep = ( step:number) => {
@@ -39,7 +38,7 @@ export const StepTwo:FC<StepProps> = () => {
                 onPrev={()=>{setStep(step-1)}}
                 showPrev={true}
             >
-                <div style={{display:"flex", flexDirection:"row", gap:"16px"}}>
+                <div className={styles.planlist}>
                 {Object.entries(plans).map(([planId, planDetails]) => (
                     <PlanComponent
                         key={planId}

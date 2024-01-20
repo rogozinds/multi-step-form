@@ -1,3 +1,8 @@
+.planlist{
+    display:flex;
+    flex-direction:row;
+    gap:1rem
+}
 .container {
     width: 138px;
     height: 160px;
@@ -5,11 +10,24 @@
     border-radius: 8px;
     border: 1px solid #D6D9E6;
     background: #F8F9FF;
-    padding: 16px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+}
+@media (max-width: 700px) {
+    .planlist {
+        flex-direction:column;
+    }
+    .container {
+        width: 100%;
+        height: 77px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
 }
 .selected {
     border: 2px solid  #483EFF;

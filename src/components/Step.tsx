@@ -17,7 +17,7 @@ export const Step:FC<StepProps> = ({ header, subheader, children, onPrev, onNext
         nextTitle = nextButtonTitle;
     }
     return (
-        <div style={{height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-between"}}>
+        <div className={styles.main}>
             <div>
                 <StepHeader header={header}
                             subheader={subheader}/>
@@ -26,7 +26,7 @@ export const Step:FC<StepProps> = ({ header, subheader, children, onPrev, onNext
                 </div>
             </div>
             <div className={styles.step_navigation}>
-                {showPrev && <button  className={styles.prev_button} onClick={onPrev}>Go Back</button>}
+                <button className={`${styles.prev_button} ${!showPrev && styles.hidden}`} onClick={onPrev}>Go Back</button>
                 <button className={styles.next_button} onClick={onNext}>{nextTitle}</button>
             </div>
         </div>
