@@ -42,9 +42,10 @@ export const StepOne:FC = () => {
             newErrors.phone = phoneRef.current.validationMessage;
         }
         setErrors(newErrors);
-        if (Object.keys(newErrors).length === 0) {
-            setStep(step+1);
-        }
+        setStep(step+1);
+        // if (Object.keys(newErrors).length === 0) {
+        //     setStep(step+1);
+        // }
     }
     return (
             <Step
