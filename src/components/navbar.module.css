@@ -6,7 +6,7 @@
     width: 100%;
 }
 .backgroundImage  {
-    background-image: url("/images/bg-sidebar-desktop.svg");
+    background-image: url("/multi-step-form/images/bg-sidebar-desktop.svg");
     background-size: cover;
     height: 100%;
     border-radius: 10px;
