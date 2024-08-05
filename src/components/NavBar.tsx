@@ -22,6 +22,21 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
           : {  backgroundColor: 'transparent', color: 'white', border: '1px solid white' ,   };
       };
     return (
+    <>
+        <Image
+            className={styles.logo}
+            src={"images/bg-sidebar-desktop.svg"}
+            alt="Some icon"
+            // fill={true}
+            style={
+                {
+                    backgroundSize: "cover",
+                    height: "100%",
+                    borderRadius: "10px"
+            }
+            }
+            priority></Image>
+
             <div className={styles.backgroundImage} >
               {steps.map(step => (
                     <div key={step.index} className={styles.stepContainer}>
@@ -35,5 +50,6 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
                     </div>
               ))}
     </div>
+        </>
     );
 };

@@ -6,7 +6,7 @@
     width: 100%;
 }
 .backgroundImage  {
-    background-image: url("/multi-step-form/images/bg-sidebar-desktop.svg");
+    /*background-image: url("/images/bg-sidebar-desktop.svg");*/
     background-size: cover;
     height: 100%;
     border-radius: 10px;
@@ -14,6 +14,20 @@
     flex-direction: column;
     padding: 40px;
     gap: 10px;
+}
+@media (max-width: 700px) {
+    .backgroundImage {
+        background-image: url("/images/bg-sidebar-mobile.svg");
+        display: flex;
+        flex-direction: row;
+        border-radius: 0px;
+        justify-content: center;
+        align-items: self-start;
+        gap:8px;
+    }
+    .stepInfo {
+        display: none;
+    }
 }
 .stepContainer {
     display: flex;
@@ -53,18 +67,4 @@
     line-height: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
-}
-@media (max-width: 700px) {
-    .backgroundImage {
-        background-image: url("/images/bg-sidebar-mobile.svg");
-        display: flex;
-        flex-direction: row;
-        border-radius: 0px;
-        justify-content: center;
-        align-items: self-start;
-        gap:8px;
-    }
-    .stepInfo {
-        display: none;
-    }
 }

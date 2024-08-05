@@ -5,8 +5,7 @@ import styles from './thankyou.module.css';
 export const ThankYouPage:React.FC = () => {
     return (
         <div className={styles.container}>
-            <Image
-                style={{marginBottom:"24px"}}
+            <Image style={{marginBottom:"24px"}}
                 src="images/icon-thank-you.svg"
                 alt="Thank You"
                 width={40}
