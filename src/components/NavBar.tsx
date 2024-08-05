@@ -34,6 +34,6 @@ export const NavBar:React.FC<NavBarProps> = ({steps, activeStep, setActiveStep})
                         </div>
                     </div>
               ))}
-    </div>
+            </div>
     );
 };

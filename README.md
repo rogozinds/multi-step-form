@@ -46,3 +46,4 @@ Users should be able to:
 
 ### Deployed with
 - Deployed with vercel, because there were issues with images hosting when deployed with github pages.
+- Deployment is done via https://vercel.com/
